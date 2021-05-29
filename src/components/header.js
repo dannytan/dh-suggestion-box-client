@@ -31,6 +31,7 @@ const Header = props => {
   const [{ auth }, dispatch] = useStateValue();
 
   const handleLogout = async () => {
+    localStorage.clear();
     await dispatch(logout());
   };
 

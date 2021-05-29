@@ -7,18 +7,18 @@ import Input from '../../../components/form/input';
 import ErrorText from '../../../components/form/error';
 
 const LoginForm = props => (
-  <Formik initialValues={{ username: '', password: '' }} {...props}>
+  <Formik initialValues={{ email: '', password: '' }} {...props}>
     {({ handleChange, handleBlur, values, handleSubmit, errors }) => (
       <FormGroup>
         {errors.genericError && <ErrorText>{errors.genericError}</ErrorText>}
         <Input
-          name="username"
-          id="username"
-          placeholder="Username"
-          onChange={handleChange('username')}
-          onBlur={handleBlur('username')}
-          error={errors.username}
-          value={values.username}
+          name="email"
+          id="email"
+          placeholder="Email"
+          onChange={handleChange('email')}
+          onBlur={handleBlur('email')}
+          error={errors.email}
+          value={values.email}
         />
         <Input
           id="password"

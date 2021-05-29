@@ -2,6 +2,8 @@ import { LOGIN, LOGOUT } from './actions';
 
 export const INITIAL_STATE = {
   logged: false,
+  tokens: null,
+  user: null,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -9,6 +11,8 @@ export default (state = INITIAL_STATE, action) => {
     case LOGIN:
       return {
         logged: true,
+        tokens: action.payload.tokens,
+        user: action.payload.user,
       };
     case LOGOUT:
       return {

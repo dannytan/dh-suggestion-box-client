@@ -8,7 +8,7 @@ import Spinner from '../../components/spinner';
 
 const Login = ({ location, history }) => {
   const { from } = location.state || { from: { pathname: '/home' } };
-  const [auth, setLogin, isLoading] = useLogin();
+  const [auth, setLogin, isLoading, error] = useLogin();
 
   useEffect(() => {
     if (auth.logged) {
@@ -20,6 +20,7 @@ const Login = ({ location, history }) => {
     <Container>
       <Spinner show={isLoading} />
       <Form onSubmit={(values, actions) => setLogin({ values, actions })} />
+      {error && <div style={{ color: 'red', margin: '1rem' }}>{error}</div>}
     </Container>
   );
 };
