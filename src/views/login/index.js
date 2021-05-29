@@ -5,13 +5,14 @@ import useLogin from '../../state/auth/hooks/useLogin';
 import Container from './containers/container';
 import Form from './containers/form';
 import Spinner from '../../components/spinner';
+import { isTokenExpired } from '../../utils/jwt';
 
 const Login = ({ location, history }) => {
   const { from } = location.state || { from: { pathname: '/home' } };
   const [auth, setLogin, isLoading, error] = useLogin();
 
   useEffect(() => {
-    if (auth.logged) {
+    if (!isTokenExpired()) {
       history.push(from);
     }
   }, [auth, from, history]);

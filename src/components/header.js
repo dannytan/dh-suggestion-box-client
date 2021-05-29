@@ -5,6 +5,7 @@ import { useStateValue } from '../state';
 import { logout } from '../state/auth/actions';
 
 import Button from './button';
+import { isTokenExpired } from '../utils/jwt';
 
 const Nav = styled.div`
   height: 50px;
@@ -39,7 +40,7 @@ const Header = props => {
     <Nav>
       <Title>DH Suggestion Box</Title>
       <Right>
-        {auth.logged && (
+        {!isTokenExpired() && (
           <Button gradient onClick={() => handleLogout()}>
             Logout
           </Button>
