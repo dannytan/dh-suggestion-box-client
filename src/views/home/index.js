@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import moment from 'moment';
 import useSuggestions from '../../state/suggestion/hooks/useSuggestions';
+import { getRelativeTimeFromDate, formatDate } from '../../utils/date';
 import ChatIcon from '../../assets/chat-icon.svg';
 import './home.css';
 
@@ -16,10 +16,6 @@ const Home = () => {
     }
   }, [suggestion, setListSuggestions]);
 
-  const getRelativeTimeFromDate = date => {
-    return moment(date).fromNow();
-  };
-
   return (
     <div>
       <Spinner show={isLoading} />
@@ -34,7 +30,7 @@ const Home = () => {
               <div style={{ fontWeight: 'bold', fontSize: '1.2rem', marginBottom: 12 }}>{s.title}</div>
               <div style={{ marginBottom: 20 }}>{s.description}</div>
               <div style={{ fontSize: '0.8rem', color: '#888' }}>
-                Submitted by <span style={{ fontWeight: 'bold' }}>{s.user.name}</span> on {s.createdAt}
+                Submitted by <span style={{ fontWeight: 'bold' }}>{s.user.name}</span> on {formatDate(s.createdAt)}
               </div>
             </section>
           </li>
