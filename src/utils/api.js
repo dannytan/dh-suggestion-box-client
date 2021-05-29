@@ -6,9 +6,9 @@ const http = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
 
-const accessToken = localStorage.getItem(LOCAL_STORAGE.ACCESS_TOKEN);
 let isRefreshing = false;
 const isTokenGoingToExpire = () => {
+  const accessToken = localStorage.getItem(LOCAL_STORAGE.ACCESS_TOKEN);
   if (!accessToken) return false;
   const now = new Date();
   const nowInSeconds = now.getTime() / 1000;
@@ -52,6 +52,7 @@ http.interceptors.request.use(
   request => {
     const originalRequest = request;
 
+    const accessToken = localStorage.getItem(LOCAL_STORAGE.ACCESS_TOKEN);
     if (accessToken !== null) {
       request.headers.Authorization = `Bearer ${accessToken}`;
       return request;
@@ -85,17 +86,4 @@ http.interceptors.response.use(
   }
 );
 
-export default {
-  get(url, options) {
-    return http.get(url, options);
-  },
-  post(url, body) {
-    return http.post(url, body);
-  },
-  put(url, body) {
-    return http.put(url, body);
-  },
-  delete(url) {
-    return http.delete(url);
-  },
-};
+export default http;
