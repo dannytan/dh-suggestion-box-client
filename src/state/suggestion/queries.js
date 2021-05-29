@@ -12,7 +12,7 @@ export const loadProducts = () => {
 
 export const loadSuggestions = () => {
   return api
-    .get(`${basePath}`)
+    .get(`${basePath}?sortBy=createdAt:desc`)
     .then(res => res.data)
     .catch(err => {
       throw err.response.data;
