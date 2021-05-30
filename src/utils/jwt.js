@@ -15,3 +15,13 @@ export const isTokenExpired = () => {
   }
   return true;
 };
+
+export const isTokenAboutToExpire = () => {
+  const accessToken = localStorage.getItem(LOCAL_STORAGE.ACCESS_TOKEN);
+  if (!accessToken) return false;
+  const now = new Date();
+  const nowInSeconds = now.getTime() / 1000;
+  const tokenExpireInSeconds = jwt.decode(accessToken).exp;
+  const minutesTillExpire = (tokenExpireInSeconds - nowInSeconds) / 60;
+  return minutesTillExpire >= 0 && minutesTillExpire < 10;
+};
