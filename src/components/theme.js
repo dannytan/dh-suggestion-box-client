@@ -2,8 +2,6 @@ const colors = {
   primary: '#0060a8',
   secondary: '#43b1fe',
   default: '#fff',
-  gradient: 'linear-gradient(112deg, rgba(113,89,193,1) 0%, rgba(155,73,193,1) 100%);',
-  bg: 'linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);',
 };
 
 const viewports = {

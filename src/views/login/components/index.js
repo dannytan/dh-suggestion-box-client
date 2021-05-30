@@ -1,12 +1,29 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { Formik, Form } from 'formik';
-import Button from '../../../components/button';
+import styled from 'styled-components';
+import { Form, Formik } from 'formik';
 import FormGroup from '../../../components/form/formGroup';
-import Input from '../../../components/form/input';
 import ErrorText from '../../../components/form/error';
+import Input from '../../../components/form/input';
+import Button from '../../../components/button';
 
-const LoginForm = props => (
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 50px);
+`;
+
+export const Error = styled.div`
+  color: #ed4337;
+  font-weight: 500;
+  margin: 1rem 0;
+  font-size: 0.8rem;
+  max-width: 250px;
+  line-height: 1.5;
+`;
+
+export const LoginForm = props => (
   <Formik initialValues={{ email: '', password: '' }} {...props}>
     {({ handleChange, handleBlur, values, handleSubmit, errors }) => (
       <Form>
@@ -39,5 +56,3 @@ const LoginForm = props => (
     )}
   </Formik>
 );
-
-export default LoginForm;
