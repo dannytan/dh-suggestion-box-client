@@ -37,7 +37,7 @@ const Home = () => {
           <SuggestionForm onSubmit={handleSubmit} />
         </div>
         <HeadingContainerSpaceBetween>
-          <Heading>View Suggestions</Heading>
+          <Heading>Suggestion Feed</Heading>
           <Button type="submit" onClick={getSuggestions}>
             Refresh
           </Button>

@@ -98,14 +98,15 @@ export const SuggestionFeedItem = styled.li`
   }
   .title {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 12px;
   }
   .description {
+    font-size: 0.9rem;
     margin-bottom: 20px;
   }
   .footer {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: #888;
     line-height: 1.5;
   }
