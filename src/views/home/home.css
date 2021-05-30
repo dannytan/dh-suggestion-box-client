@@ -1,7 +1,7 @@
 .suggestion-feed {
   list-style-type: none;
   padding: 0;
-  margin: 2.5rem;
+  margin: 32px 0 32px 32px;
 }
 .suggestion-feed .feed-item {
   position: relative;

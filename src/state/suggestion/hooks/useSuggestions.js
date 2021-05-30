@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useStateValue } from '../../index';
-import { loadSuggestions } from '../queries';
+import { loadSuggestions, createSuggestion } from '../queries';
 import { listSuggestions } from '../actions';
 
 const useSuggestions = () => {
@@ -8,7 +8,7 @@ const useSuggestions = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const request = async () => {
+  const getSuggestions = async () => {
     setIsLoading(true);
 
     try {
@@ -21,7 +21,20 @@ const useSuggestions = () => {
     setIsLoading(false);
   };
 
-  return [suggestion, isLoading, request, error];
+  const submitSuggestion = async body => {
+    setIsLoading(true);
+
+    try {
+      await createSuggestion(body);
+      getSuggestions();
+    } catch (err) {
+      setError(err.message);
+    }
+
+    setIsLoading(false);
+  };
+
+  return [suggestion, getSuggestions, submitSuggestion, isLoading, error];
 };
 
 export default useSuggestions;

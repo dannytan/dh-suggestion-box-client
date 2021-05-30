@@ -41,7 +41,7 @@ const Header = props => {
       <Title>DH Suggestion Box</Title>
       <Right>
         {!isTokenExpired() && (
-          <Button gradient onClick={() => handleLogout()}>
+          <Button primary onClick={() => handleLogout()}>
             Logout
           </Button>
         )}
