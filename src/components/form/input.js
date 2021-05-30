@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import theme from '../theme';
 
 const Input = styled.input`
   margin: 10px 5px;
@@ -7,6 +8,9 @@ const Input = styled.input`
   padding: 7px;
   box-sizing: border-box;
   width: 100%;
+  :focus {
+    outline-color: ${theme.colors.primary};
+  }
 `;
 
 export default Input;

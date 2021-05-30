@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import theme from '../theme';
 
 const TextArea = styled.textarea`
   margin: 10px 5px;
@@ -9,6 +10,9 @@ const TextArea = styled.textarea`
   width: 100%;
   resize: vertical;
   font-family: inherit;
+  :focus {
+    outline-color: ${theme.colors.primary};
+  }
 `;
 
 export default TextArea;

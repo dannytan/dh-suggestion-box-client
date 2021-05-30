@@ -13,7 +13,7 @@ const Nav = styled.div`
   display: flex;
   align-items: center;
   padding: 0 20px;
-  background: #f8f9fa;
+  background: #f2f2f2;
   position: ${props => (props.fixed ? 'fixed' : 'relative')};
 `;
 
