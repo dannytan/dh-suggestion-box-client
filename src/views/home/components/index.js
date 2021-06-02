@@ -8,7 +8,9 @@ import TextArea from '../../../components/form/textarea';
 import Button from '../../../components/button';
 
 export const Container = styled.div`
-  margin: 0 1rem;
+  padding: 0 1rem;
+  width: 100%;
+  max-width: 650px;
   .section {
     margin: 3rem 0;
   }
@@ -56,12 +58,12 @@ export const SuggestionFeedItem = styled.li`
   :before {
     content: attr(data-date);
     display: flex;
-    width: 100px;
+    width: 120px;
     position: absolute;
     text-align: center;
     justify-content: center;
     align-items: center;
-    left: -50px;
+    left: -60px;
     top: -22px;
     font-size: 12px;
     color: #999;
@@ -110,6 +112,13 @@ export const SuggestionFeedItem = styled.li`
     color: #888;
     line-height: 1.5;
   }
+`;
+
+export const SuggestionNotFound = styled.div`
+  color: #888;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 3rem 0;
 `;
 
 export const SuggestionForm = props => (

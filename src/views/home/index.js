@@ -11,6 +11,7 @@ import {
   SuggestionFeed,
   SuggestionFeedIcon,
   SuggestionFeedItem,
+  SuggestionNotFound,
   SuggestionForm,
 } from './components';
 
@@ -18,7 +19,7 @@ const Home = () => {
   const [suggestion, getSuggestions, submitSuggestion, isLoading, error] = useSuggestions();
 
   useEffect(() => {
-    if (!suggestion || suggestion.results?.length === 0) {
+    if (!suggestion) {
       getSuggestions();
     }
   }, [suggestion, getSuggestions]);
@@ -27,6 +28,8 @@ const Home = () => {
     await submitSuggestion(values);
     actions.resetForm();
   };
+
+  const suggestionsFound = suggestion?.results?.length > 0;
 
   return (
     <>
@@ -42,20 +45,24 @@ const Home = () => {
             Refresh
           </Button>
         </HeadingContainerSpaceBetween>
-        <SuggestionFeed>
-          {suggestion?.results?.map((s, index) => (
-            <SuggestionFeedItem key={index} data-date={getRelativeTimeFromDate(s.createdAt)}>
-              <SuggestionFeedIcon src={ChatIcon} alt="Chat Icon" />
-              <section>
-                <div className="title">{s.title}</div>
-                <div className="description">{s.description}</div>
-                <div className="footer">
-                  Suggested by <span className="bold">{s.user.name}</span> on {formatDate(s.createdAt)}
-                </div>
-              </section>
-            </SuggestionFeedItem>
-          ))}
-        </SuggestionFeed>
+        {suggestionsFound ? (
+          <SuggestionFeed>
+            {suggestion?.results?.map((s, index) => (
+              <SuggestionFeedItem key={index} data-date={getRelativeTimeFromDate(s.createdAt)}>
+                <SuggestionFeedIcon src={ChatIcon} alt="Chat Icon" />
+                <section>
+                  <div className="title">{s.title}</div>
+                  <div className="description">{s.description}</div>
+                  <div className="footer">
+                    Suggested by <span className="bold">{s.user.name}</span> on {formatDate(s.createdAt)}
+                  </div>
+                </section>
+              </SuggestionFeedItem>
+            ))}
+          </SuggestionFeed>
+        ) : (
+          <SuggestionNotFound>No suggestions found.</SuggestionNotFound>
+        )}
       </Container>
     </>
   );
