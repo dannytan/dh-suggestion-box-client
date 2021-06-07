@@ -4,7 +4,7 @@ const basePath = '/suggestions';
 
 export const loadSuggestions = () => {
   return api
-    .get(`${basePath}?sortBy=createdAt:desc`)
+    .get(`${basePath}`)
     .then(res => res.data)
     .catch(err => {
       throw err.response.data;

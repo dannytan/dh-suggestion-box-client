@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import useSuggestions from '../../state/suggestion/hooks/useSuggestions';
-import { getRelativeTimeFromDate, formatDate } from '../../utils/date';
+import { getRelativeTimeFromDate } from '../../utils/date';
 import ChatIcon from '../../assets/chat-icon.svg';
 import Spinner from '../../components/spinner';
 import Button from '../../components/button';
@@ -54,7 +54,7 @@ const Home = () => {
                   <div className="title">{s.title}</div>
                   <div className="description">{s.description}</div>
                   <div className="footer">
-                    Suggested by <span className="bold">{s.user.name}</span> on {formatDate(s.createdAt)}
+                    Suggested by <span className="bold">{s.user.name}</span> on {s.createdAt}
                   </div>
                 </section>
               </SuggestionFeedItem>
