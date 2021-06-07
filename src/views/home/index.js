@@ -47,18 +47,16 @@ const Home = () => {
         </HeadingContainerSpaceBetween>
         {suggestionsFound ? (
           <SuggestionFeed>
-            {suggestion?.results?.map((s, index) => (
-              <SuggestionFeedItem key={index} data-date={getRelativeTimeFromDate(s.createdAt)}>
-                <SuggestionFeedIcon src={ChatIcon} alt="Chat Icon" />
-                <section>
-                  <div className="title">{s.title}</div>
-                  <div className="description">{s.description}</div>
-                  <div className="footer">
-                    Suggested by <span className="bold">{s.user.name}</span> on {s.createdAt}
-                  </div>
-                </section>
-              </SuggestionFeedItem>
-            ))}
+            <SuggestionFeedItem data-date={getRelativeTimeFromDate(suggestion?.results[0]?.createdAt)}>
+              <SuggestionFeedIcon src={ChatIcon} alt="Chat Icon" />
+              <section>
+                <div className="title">Suggestion Title</div>
+                <div className="description">Suggestion description here.</div>
+                <div className="footer">
+                  Suggested by <span className="bold">Some User</span> on 2021-06-05T00:00:00.000Z
+                </div>
+              </section>
+            </SuggestionFeedItem>
           </SuggestionFeed>
         ) : (
           <SuggestionNotFound>No suggestions found.</SuggestionNotFound>
