@@ -18,15 +18,8 @@ const Home = () => {
   const [suggestion, getSuggestions, submitSuggestion, isLoading, error] = useSuggestions();
 
   useEffect(() => {
-    if (!suggestion) {
-      getSuggestions();
-    }
-  }, [suggestion, getSuggestions]);
-
-  const handleSubmit = async (values, actions) => {
-    await submitSuggestion(values);
-    actions.resetForm();
-  };
+    getSuggestions();
+  }, []);
 
   return (
     <>
@@ -34,7 +27,7 @@ const Home = () => {
       <Container>
         <div className="section">
           <Heading>Make a Suggestion</Heading>
-          <SuggestionForm onSubmit={handleSubmit} />
+          <SuggestionForm />
         </div>
         <HeadingContainerSpaceBetween>
           <Heading>Suggestion Feed</Heading>
@@ -43,7 +36,7 @@ const Home = () => {
           </Button>
         </HeadingContainerSpaceBetween>
         <SuggestionFeed>
-          <SuggestionFeedItem data-date={getRelativeTimeFromDate(suggestion?.results[0]?.createdAt)}>
+          <SuggestionFeedItem data-date={getRelativeTimeFromDate('2021-06-05T00:00:00.000Z')}>
             <SuggestionFeedIcon src={ChatIcon} alt="Chat Icon" />
             <section>
               <div className="title">Suggestion Title</div>
