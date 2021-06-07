@@ -113,13 +113,6 @@ export const SuggestionFeedItem = styled.li`
   }
 `;
 
-export const SuggestionNotFound = styled.div`
-  color: #888;
-  font-size: 0.9rem;
-  text-align: center;
-  padding: 3rem 0;
-`;
-
 export const SuggestionForm = props => (
   <Formik initialValues={{ title: '', description: '' }} {...props}>
     {({ handleChange, handleBlur, values, handleSubmit, errors }) => (

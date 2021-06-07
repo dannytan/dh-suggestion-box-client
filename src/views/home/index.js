@@ -11,7 +11,6 @@ import {
   SuggestionFeed,
   SuggestionFeedIcon,
   SuggestionFeedItem,
-  SuggestionNotFound,
   SuggestionForm,
 } from './components';
 
@@ -29,8 +28,6 @@ const Home = () => {
     actions.resetForm();
   };
 
-  const suggestionsFound = suggestion?.results?.length > 0;
-
   return (
     <>
       <Spinner show={isLoading} />
@@ -45,22 +42,18 @@ const Home = () => {
             Refresh
           </Button>
         </HeadingContainerSpaceBetween>
-        {suggestionsFound ? (
-          <SuggestionFeed>
-            <SuggestionFeedItem data-date={getRelativeTimeFromDate(suggestion?.results[0]?.createdAt)}>
-              <SuggestionFeedIcon src={ChatIcon} alt="Chat Icon" />
-              <section>
-                <div className="title">Suggestion Title</div>
-                <div className="description">Suggestion description here.</div>
-                <div className="footer">
-                  Suggested by <span className="bold">Some User</span> on 2021-06-05T00:00:00.000Z
-                </div>
-              </section>
-            </SuggestionFeedItem>
-          </SuggestionFeed>
-        ) : (
-          <SuggestionNotFound>No suggestions found.</SuggestionNotFound>
-        )}
+        <SuggestionFeed>
+          <SuggestionFeedItem data-date={getRelativeTimeFromDate(suggestion?.results[0]?.createdAt)}>
+            <SuggestionFeedIcon src={ChatIcon} alt="Chat Icon" />
+            <section>
+              <div className="title">Suggestion Title</div>
+              <div className="description">Suggestion description here.</div>
+              <div className="footer">
+                Suggested by <span className="bold">Some User</span> on 2021-06-05T00:00:00.000Z
+              </div>
+            </section>
+          </SuggestionFeedItem>
+        </SuggestionFeed>
       </Container>
     </>
   );
