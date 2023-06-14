@@ -1,19 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { StateProvider } from '../state';
-import { INITIAL_STATE as AUTH_INITIAL_STATE } from '../state/auth/reducers';
 import { INITIAL_STATE as SUGGESTION_INITIAL_STATE } from '../state/suggestion/reducers';
 import reducers from '../state/reducers';
 import BaseStyles from './base-styles';
-import PrivateRoute from './private-route';
 import Content from '../components/content';
 import Header from '../components/header';
-import Login from '../views/login';
 import Home from '../views/home';
 
 const Root = props => {
   const initialState = {
-    auth: AUTH_INITIAL_STATE,
     suggestion: SUGGESTION_INITIAL_STATE,
   };
   return (
@@ -24,8 +20,7 @@ const Root = props => {
           <Header />
           <Content>
             <Switch>
-              <Route exact path="/" component={Login} />
-              <PrivateRoute path="/home" component={Home} />
+              <Route exact path="/" component={Home} />
             </Switch>
           </Content>
         </>

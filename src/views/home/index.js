@@ -53,9 +53,7 @@ const Home = () => {
                 <section>
                   <div className="title">{s.title}</div>
                   <div className="description">{s.description}</div>
-                  <div className="footer">
-                    Suggested by <span className="bold">{s.user.name}</span> on {formatDate(s.createdAt)}
-                  </div>
+                  <div className="footer">{formatDate(s.createdAt)}</div>
                 </section>
               </SuggestionFeedItem>
             ))}

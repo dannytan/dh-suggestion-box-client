@@ -13,7 +13,7 @@ const useSuggestions = () => {
 
     try {
       const response = await loadSuggestions();
-      dispatch(listSuggestions(response));
+      dispatch(listSuggestions({ results: response }));
     } catch (err) {
       setError(err.message);
     }
