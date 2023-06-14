@@ -20,7 +20,6 @@ export const Container = styled.div`
 `;
 
 export const Heading = styled.div`
-  font-weight: 800;
   font-size: 1.2rem;
   margin-bottom: 8px;
 `;
